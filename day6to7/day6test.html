@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css"
+	type="text/css" media="screen" />
+<script type="text/javascript"
+	src="http://code.jquery.com/qunit/git/qunit.js"></script>
+
+<script type="text/javascript" src="day6.js"></script>
+
+</head>
+<body>
+	<div id="left" style="float: left;"></div>
+	<div id="right" style="float: left;"></div>
+	<h1 id="qunit-header">QUnit example</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+
+	<script type="text/javascript">
+		var tmp = Day6(document.getElementById('left'),document.getElementById('right'));
+		test("increment test", function() {
+			var tmpObj = document.createElement("input");
+			tmpObj.value = 200;
+			tmp.increment(tmpObj);
+			equal((tmpObj.value == 201), true, "is it right?");
+		});
+		test("decrement test", function() {
+			var tmpObj = document.createElement("input");
+			tmpObj.value = 200;
+			tmp.decrement(tmpObj);
+			equal((tmpObj.value == 199), true, "is it right?");
+		});
+		test("extractNumbers test", function() {
+			var tmpObj = document.createElement("input");
+			tmpObj.value = "g2a34s";
+			tmp.extractNumbers(tmpObj);
+			equal(tmpObj.value, 234, "olleh");
+		});
+		test("rangeEvaluation test", function() {
+			var tmpObj = document.createElement("input");
+			tmpObj.value = "398";
+			tmp.rangeEvaluation(tmpObj);
+			equal(tmpObj.value, 300, "olleh");
+		});
+	</script>
+</body>
+</html>
