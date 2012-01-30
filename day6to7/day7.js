@@ -86,7 +86,6 @@ function drag(elToDrag, elTarget, event) {
 		for( var i in oStyle){
 			
 			if(typeof i == "string" && i != "cssText" && !/\d/.test(i)){
-				alert(i);
 				try{
 					elDest.style[i] = oStyle[i];
 					if(i == "font"){
