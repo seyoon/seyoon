@@ -84,11 +84,13 @@ function drag(elToDrag, elTarget, event) {
 	function copyComputedStyle(elSrc, elDest) {
 		var oStyle = getRealStyle(elSrc);
 		for( var i in oStyle){
+			
 			if(typeof i == "string" && i != "cssText" && !/\d/.test(i)){
+				alert(i);
 				try{
-					elDest.style[i] = s[i];
+					elDest.style[i] = oStyle[i];
 					if(i == "font"){
-						elDest.style.fontSize = s.fontSize;
+						elDest.style.fontSize = oStyle.fontSize;
 					}
 				}catch (e){
 				}
