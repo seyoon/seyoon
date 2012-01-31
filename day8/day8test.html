@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css"
+	type="text/css" media="screen" />
+<script type="text/javascript"
+	src="http://code.jquery.com/qunit/git/qunit.js"></script>
+</head>
+
+<script type="text/javascript" src="day8.js"></script>
+
+<body>	<div id="machine" style="visibility: collapse; height:1px">
+		<div id="machineHead">
+			
+		</div>
+		<div id="machineBody">
+			<div id="leftBody">
+				<div id="moneyIndicator"></div>
+				<input type="button" id="btnRefund" value="도로뱉어" />
+			</div>
+			<div id="rightBody">
+				<div id="coins">
+			
+				</div>
+				<div id="moneyLeft"></div>
+			</div>
+		</div>
+		<div id="machineFeet">
+			<div id="log"></div>
+		</div>
+	</div>
+	<h1 id="qunit-header">QUnit example</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+	
+	<script type="text/javascript">
+	var testObj = new vendingMachine();
+	
+	test("getGlobalOffset", function() {
+		var tmp = document.getElementById('qunit-header');
+		equal(testObj.getGlobalOffset(tmp, "Left"), 8, "is it right?");
+	});
+	
+	test("jsMap put", function() {
+		var tmp = new testObj.jsMap();
+		equal(tmp.size(), 0, "is it right?");
+		tmp.put('newObj', 'hello');
+		equal(tmp.size(), 1, "is it right?");
+	});
+
+	test("jsMap get", function() {
+		var tmp = new testObj.jsMap();
+		tmp.put('newObj', 'hello');
+		equal(tmp.get('newObj'), 'hello', "is it right?");
+	});
+
+	test("jsMap getValueByIndex", function() {
+		var tmp = new testObj.jsMap();
+		tmp.put('newObj', 'hello');
+		tmp.put('newObj2', 'hello2');
+		tmp.put('newObj3', 'hello3');
+		equal(tmp.getValueByIndex(1), 'hello2', "is it right?");
+	});
+	
+	test("jsMap getKeyByIndex", function() {
+		var tmp = new testObj.jsMap();
+		tmp.put('newObj', 'hello');
+		tmp.put('newObj2', 'hello2');
+		tmp.put('newObj3', 'hello3');
+		equal(tmp.getKeyByIndex(1), 'newObj2', "is it right?");
+	});
+	
+	test("jsMap isNext", function() {
+		var tmp = new testObj.jsMap();
+		equal(tmp.isNext(), false, "is it right?");
+	});
+	
+	</script>
+</body>
+</html>

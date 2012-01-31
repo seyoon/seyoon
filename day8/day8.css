@@ -1,0 +1,180 @@
+@CHARSET "UTF-8";
+
+#machine {
+	width: 400px;
+	height: 600px;
+	float: left;
+	border: solid black;
+	border-width: 10px;
+	background-color: #4633d3;
+}
+
+#machineHead {
+	width: 97%;
+	height: 30%;
+	background-color: #4633d3;
+	padding: 2% 0 0 3%;
+}
+
+.goods {
+	float: left;
+	width: 24.7%;
+	height: 45%;
+	overflow: hidden;
+	margin-top: 5px;
+	color:white;
+}
+
+.selectedGoods {
+	background-color: #b2c3fd;
+	float: left;
+	width: 24.7%;
+	height: 45%;
+	overflow: hidden;
+	margin-top: 5px;
+	color : navy;
+	font-weight: bold;
+}
+
+.goods:hover {
+	background-color: #2b65e8;
+	float: left;
+	width: 24.7%;
+	height: 45%;
+	overflow: hidden;
+	color : white;
+	font : bold;
+}
+
+.goodsImg {
+	width: 80%;
+	height: 80%;
+}
+
+.goodsName {
+	width: 80%;
+	height: 80%;
+	background-color: white;
+	margin: 10px 10px 10px 10px;
+}
+
+.valueLabel {
+	height: 18%;
+	vertical-align: bottom;
+	text-align: center;
+}
+
+#machineBody {
+	width: 100%;
+	height: 40%;
+	background-color: #0e106d;
+}
+
+#leftBody {
+	width: 40%;
+	height: 90%;
+	float: left;
+	margin: 15px 15px 15px 15px;
+}
+
+#moneyIndicator {
+	width: 80%;
+	height: 35%;
+	background-color: #b2c3fd;
+	color: navy;
+	text-align:center;
+	font-weight: bold;
+	font-size : 45px;
+	margin: 15px 15px 10px 25px;
+	padding-top : 20px;
+	vertical-align: middle;
+	border: solid #4633d3;
+	border-width: 5px;
+}
+
+#btnRefund {
+	width: 80%;
+	height: 20%;
+	background-color: #550797;
+	color: white;
+	margin: 15px 15px 10px 30px;
+	vertical-align: middle;
+}
+
+#rightBody {
+	width: 40%;
+	height: 90%;
+	float: right;
+	margin: 15px 15px 10px 25px;
+	background-color: #4633d3;
+}
+
+#coins {
+	width: 95%;
+	height: 15%;
+}
+
+.coin {
+	height: 40px;
+	background-color: navy;
+	position: absolute;
+	clear: both;
+	margin : 3px 3px 0 3px;
+}
+
+.coin:hover {
+	height: 40px;
+	background-color: #303294;
+	clear: both;
+	position: absolute;
+}
+
+.coinImg {
+	width: 30%;
+	height: 58%;
+	margin: 8px 10px 0 10px;
+	padding-top : 3px;
+	background-color: #5847d3;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	color : #b0a9e5;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.coinValue {
+	color: #b0a9e5;
+	width : 50%;
+	text-align: right;
+	float:right;
+	padding : 10px 10px 0 0;
+	font-weight: bold;
+	
+}
+
+#moneyLeft {
+	font: bold 20pt;
+	color: #d5d1f1;
+	margin: 155px 0 0 0;
+	text-align: center;
+	font-size: 9pt;
+	font-weight: bold;
+}
+
+#machineFeet {
+	width: 95%;
+	height: 26%;
+	margin : 8px 0 0 8px;
+}
+
+#log {
+	width: 100%;
+	height: 95%;
+	background-color: #0e106d;
+	color: #b2c3fd;
+	font-weight: bold;
+	border-style: hidden;
+	overflow: auto;
+	padding: 5px 0 5px 5px;
+}
