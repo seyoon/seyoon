@@ -94,7 +94,7 @@ var vendingMachine = function() {
 			}
 			return nOffset;
 		};
-		
+
 		function _setMoneyLeft(nMoney) {
 			$Element(elMoneyLeft).html("\\ " + nMoney + " in my pocket.");
 		}
@@ -102,29 +102,29 @@ var vendingMachine = function() {
 			$Element('moneyIndicator').html(nMoneyInserted);
 		}
 		function log(sLog) {
-			var logger = $('log');
-			logger.innerHTML = logger.innerHTML + sLog + "<br/>";
-			logger.scrollTop = logger.scrollHeight;
+			var logger = $Element('log');
+			logger.html(logger.html() + sLog + "<br/>").attr('scrollTop',logger.scrollHeight);
 
 		}
 		var _setCoinBox = function _setCoinBox(elDivBox) {
 			var coinTypes = new $A([ 50, 100, 500, 1000 ]);
 			for( var i = 0; i < coinTypes.length(); i++){
 				var elDivCoinBox = $Element('<div>').className('coin');
-				elDivCoinBox.$value().onmousedown = function(evt) {
-					try{
-						invokeDragEvent(this, elDivSafeZone, event);
-					}catch (e){
-						invokeDragEvent(this, elDivSafeZone, evt);
-					}
-				};
-				var elDivCoinImg = $Element('<div>').className('coinImg').html(coinTypes.get(i));
-				var elDivCoinValue = $Element('<div>').className('coinValue').html("\\ " + coinTypes.get(i));
+				$Fn(
+						function(e) {
+							invokeDragEvent(this,
+									elDivSafeZone, e.$value());
+						},elDivCoinBox.$value()).attach(elDivCoinBox, 'mousedown');
+				var elDivCoinImg = $Element('<div>').className('coinImg').html(
+						coinTypes.get(i));
+				var elDivCoinValue = $Element('<div>').className('coinValue')
+						.html("\\ " + coinTypes.get(i));
 				elDivCoinBox.append(elDivCoinImg).append(elDivCoinValue);
 				$Element(elDivBox).append(elDivCoinBox.$value());
-				elDivCoinBox.css('top',oInstance.getGlobalOffset(elDivBox,
-						"Top") +
-						i * 43 + 'px').css('width', elDivBox.offsetWidth + 'px');
+				elDivCoinBox.css(
+						'top',
+						oInstance.getGlobalOffset(elDivBox, "Top") + i * 43 +
+								'px').css('width', elDivBox.offsetWidth + 'px');
 			}
 			_setMoneyLeft(nMoneyLeft);
 
@@ -148,7 +148,9 @@ var vendingMachine = function() {
 
 		};
 
-		$Fn(function(){_refund();}).attach(elBtnRefund,'click');
+		$Fn(function() {
+			_refund();
+		}).attach(elBtnRefund, 'click');
 
 		var _fCallbackSuccess = function() {
 			if(nMoneyLeft >= nMoneyDragging){
@@ -194,19 +196,28 @@ var vendingMachine = function() {
 
 		var _addGoodsSlot = function(elDivBox, goodsName, goodsValue, imgSrc) {
 			var elDivNewSlot = $Element('<div>');
+			var el = elDivNewSlot.$value();
 			elDivNewSlot.className('goods');
-			elDivNewSlot.$value().ondblclick = function() {
-				_setSelectedStyle(elDivNewSlot.$value());
-				_getStuff(this);
-			};
-			
+
+			// elDivNewSlot.$value().ondblclick = function() {
+			// _setSelectedStyle(elDivNewSlot.$value());
+			// _getStuff(this);
+			// };
+			//			
+			$Fn(function(e) {
+				_setSelectedStyle(el);
+				_getStuff(el);
+			}).attach(elDivNewSlot, 'dblclick');
+
 			$Element('<div>').className('goodsName').html(goodsName);
-			var elDivNewValueLabel = $Element('<div>').className('valueLabel').html(goodsValue);
-			var elImg = $Element('<img>').attr('src', imgSrc).attr('alt', goodsName).className('goodsImg');
+			var elDivNewValueLabel = $Element('<div>').className('valueLabel')
+					.html(goodsValue);
+			var elImg = $Element('<img>').attr('src', imgSrc).attr('alt',
+					goodsName).className('goodsImg');
 			elDivNewSlot.append(elImg.$value()).append(elDivNewValueLabel);
 			$Element(elDivBox).append(elDivNewSlot.$value());
 		};
-		
+
 		function mountGoods(elDivBox) {
 			var isUsedIndex = function(nIndex, aUsed) {
 				for(nUsed in aUsed){
@@ -260,7 +271,6 @@ var vendingMachine = function() {
 			$ElementList(aSiblings).className('goods');
 			$Element(elSelected).className('selectedGoods');
 		}
-
 
 	}
 };

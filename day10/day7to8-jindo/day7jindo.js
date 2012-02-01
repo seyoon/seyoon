@@ -37,21 +37,8 @@ function drag(elToDrag, elTarget, event, fCallbackSuccess, fCallbackFail,
 	// copyComputedStyle(elToDrag, elClone);
 	$Element(elToDrag).parent().append(elClone);
 
-	if(document.addEventListener){
-		document.addEventListener("mousemove", moveHandler, true);
-		document.addEventListener("mouseup", upHandler, true);
-	}else if(document.attachEvent){
-		elClone.setCapture();
-		elClone.attachEvent("onmousemove", moveHandler);
-		elClone.attachEvent("onmouseup", upHandler);
-		elClone.attachEvent("onlosecapture", upHandler);
-	}else{
-		var oOldmovehandler = document.onmousemove;
-		var oOlduphandler = document.onmouseup;
-		document.onmousemove = moveHandler;
-		document.onmouseup = upHandler;
-	}
-	
+	$Fn(moveHandler,document).attach(document,'mousemove');
+	$Fn(upHandler,elClone).attach(elClone,'mouseup');
 	$Event(event).stop();
 
 	function getGlobalOffset(elArg, type) {
@@ -90,9 +77,7 @@ function drag(elToDrag, elTarget, event, fCallbackSuccess, fCallbackFail,
 	}
 
 	function moveHandler(e) {
-		if(!e){
-			e = window.event;
-		}
+		e = e.$value();
 		$Element(elClone).css('left', (e.clientX - nDeltaX) + "px").css('top',
 				(e.clientY - nDeltaY) + "px");
 		$Event(e).stop();
@@ -100,6 +85,7 @@ function drag(elToDrag, elTarget, event, fCallbackSuccess, fCallbackFail,
 	}
 
 	function upHandler(e) {
+		e = e.$value();
 		var result = false;
 		if(!bEventPairFlag){
 			bEventPairFlag = true;
@@ -111,10 +97,6 @@ function drag(elToDrag, elTarget, event, fCallbackSuccess, fCallbackFail,
 			}else{
 				result = false;
 			}
-
-//			if(!e){
-//				e = window.event;
-//			}
 			
 			if(document.removeEventListener){
 				document.removeEventListener("mouseup", upHandler, true);
