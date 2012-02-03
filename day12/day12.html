@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" charset="utf-8"
+	src="jindoComponents/jindo2.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="jindoComponents/jindo.Component.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="jindoComponents/jindo.UIComponent.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="jindoComponents/jindo.DragArea.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="jindoComponents/jindo.DropArea.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="jindoComponents/jindo.Foggy.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="jindoComponents/jindo.Transition.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="jindoComponents/jindo.RolloverArea.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="jindoComponents/jindo.Effect.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="jindoComponents/jindo.Timer.js"></script>
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="day12.js"></script>
+
+
+<style type="text/css">
+.draggable {
+	border: solid black;
+	border-width: 2px;
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	z-index: 10;
+	background-color: red;
+}
+
+.draggable-over {
+	background-color: pink;
+}
+
+.draggable-down {
+	background-color: pink;
+}
+
+.droppable {
+	border: solid black;
+	border-width: 2px;
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	z-index: 5;
+	text-align: center;
+	background-color: blue;
+	color: white;
+}
+
+.wrapper {
+	width: 1024px;
+	height: 768px;
+	position: absolute;
+}
+
+.fog {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	width: 100px;
+	height: 100px;
+	background-color: #000;
+	opacity: 0;
+}
+</style>
+
+</head>
+
+<body onload="day12(document.getElementById('divWrapper'));">
+
+	<div id='divWrapper' class='wrapper'></div>
+
+</body>
+</html>
