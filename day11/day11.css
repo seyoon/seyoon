@@ -1,0 +1,141 @@
+@CHARSET "EUC-KR";
+
+body {
+	
+}
+
+#calendar {
+	width: 30%;
+}
+
+.cHeader {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.yearMonthBox {
+	float: left;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.year {
+	text-align: center;
+	color: gray;
+	font-size: 15px;
+}
+
+.year:after {
+	content: '';
+}
+
+.month {
+	font-weight: bold;
+	text-align: center;
+	font-size: 35px;
+}
+
+.btnLeft {
+	cursor: hand;
+	float: left;
+	margin-left: 5%;
+	width: 19%;
+	height : 100%;
+	vertical-align:middle;
+	text-align: left;
+}
+
+.btnRight {
+	cursor: hand;
+	float: left;
+	margin-right: 5%;
+	width: 19%;
+	height:100%;
+	vertical-align:middle;
+	text-align: right;
+}
+
+.cBody {
+	
+}
+
+.redDayHeader {
+	text-align: center;
+	font-weight: bold; color : red;
+	float: left;
+	width: 14%;
+	color: red;
+}
+
+.blueDayHeader {
+	text-align: center;
+	font-weight: bold;
+	color: blue;
+	float: left;
+	width: 14%
+}
+
+.normDayHeader {
+	text-align: center;
+	font-weight: bold;
+	color: black;
+	float: left;
+	width: 14%
+}
+
+.redDay {
+	cursor: hand;
+	text-align: center; color : red;
+	float: left;
+	width: 14%;
+	color: red;
+}
+
+.blueDay {
+	cursor: hand;
+	text-align: center;
+	color: blue;
+	float: left;
+	width: 14%
+}
+
+.grayDay {
+	text-align: center;
+	color: gray;
+	float: left;
+	width: 14%
+}
+
+.selectedDay {
+	cursor: hand;
+	text-align: center;
+	float: left;
+	width: 14%;
+	background-color: skyblue;
+}
+
+.unselectedDay {
+	cursor: hand;
+	text-align: center;
+	float: left;
+	width: 14%;
+	background-color: white;
+}
+
+.normDay {
+	cursor: hand;
+	text-align: center;
+	color: black;
+	float: left;
+	width: 14%
+}
+
+.week {
+	display: block;
+	clear: both;
+}
+
+.dayLine {
+	display: block;
+	clear: both;
+}
