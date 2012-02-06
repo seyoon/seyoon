@@ -41,7 +41,7 @@
 					jsonp_charset : 'utf-8',
 					onload : function(res) {
 						var response = res.json();
-						var attt = (new $A(eval(response))).$value();
+						var attt = eval(response);
 						var welList = $Element('list3').empty();
 						for(var li in attt) {
 							welList.append($("<li>" + attt[li] + "</li>"));
