@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 		<script type="text/javascript" language="javascript" src="jindo.all.js"></script>
@@ -28,29 +28,29 @@
 						var ress = res.json();
 						$Element('list2').html(ress);
 					},
-					callbackid: '12345',   
-					callbackname : '_callback2'    
+					callbackid : '12345',
+					callbackname : '_callback2'
 				});
 				oAjax.request();
 			}
 
 			function ajaxRequest3() {
-				var oAjax = new $Ajax('data_JSON_for_JSONP.txt', {  
-                    type: 'jsonp',  
-                    method: 'get',            
-                    jsonp_charset: 'utf-8',   
-                    onload: function(res){  
-                        var response = res.json();  
-                        var welList = $Element('list3').empty();
-                        var aTemp = response.substring(1,response.length-1).split(','); 
-						for(var li in aTemp){
-							welList.append($("<li>" + aTemp[li].substring(1,aTemp[li].length-1) + "</li>"));  				
+				var oAjax = new $Ajax('data_JSON_for_JSONP.txt', {
+					type : 'jsonp',
+					method : 'get',
+					jsonp_charset : 'utf-8',
+					onload : function(res) {
+						var response = res.json();
+						var attt = (new $A(eval(response))).$value();
+						var welList = $Element('list3').empty();
+						for(var li in attt) {
+							welList.append($("<li>" + attt[li] + "</li>"));
 						}
-                    },
-                    callbackid: '12345',   
-                   callbackname: '_callback3'  
-                });  
-                oAjax.request();  
+					},
+					callbackid : '12345',
+					callbackname : '_callback3'
+				});
+				oAjax.request();
 			}
 
 			function ajaxRequest4() {
@@ -60,14 +60,14 @@
 					jsonp_charset : 'utf-8',
 					onload : function(res) {
 						var response = res.json();
-						 var welList = $Element('list4').empty();  
-						for(var exr in response){
-							welList.append($("<li>" + response[exr] + "</li>"));  				
+						var welList = $Element('list4').empty();
+						for(var exr in response) {
+							welList.append($("<li>" + response[exr] + "</li>"));
 
 						}
 
 					},
-					callbackname : '_callback'   
+					callbackname : '_callback'
 				});
 				oAjax.request();
 			}
@@ -80,7 +80,7 @@
 					onload : function(res) {
 						var ress = res.xml();
 						var resultTag = ress.getElementsByTagName('data')[0];
-						var resultText = (resultTag.text)? resultTag.text: resultTag.textContent;
+						var resultText = (resultTag.text) ? resultTag.text : resultTag.textContent;
 						$Element('list5').html(resultText);
 
 					}
