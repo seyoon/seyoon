@@ -1,0 +1,114 @@
+﻿<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<script type="text/javascript" language="javascript" src="jindo.all.js"></script>
+		<script type="text/javascript" language="javascript">
+			function ajaxRequest1() {
+				var oAjax = new $Ajax('data_PlainText_for_XHR.txt', {
+					type : 'xhr',
+					method : 'get',
+					onload : function(res) {
+						$('list').innerHTML = res.text();
+					},
+					timeout : 3,
+					ontimeout : function() {
+						alert("Timeout!");
+					},
+					async : true
+				});
+				oAjax.request();
+			}
+
+			function ajaxRequest2() {
+				var oAjax = new $Ajax('data_PlainText_for_JSONP.txt', {
+					type : 'jsonp',
+					method : 'get',
+					jsonp_charset : 'utf-8',
+					onload : function(res) {
+						var ress = res.json();
+						$Element('list2').html(ress);
+					},
+					callbackid: '12345',   
+					callbackname : '_callback2'    
+				});
+				oAjax.request();
+			}
+
+			function ajaxRequest3() {
+				var oAjax = new $Ajax('data_JSON_for_JSONP.txt', {  
+                    type: 'jsonp',  
+                    method: 'get',            
+                    jsonp_charset: 'utf-8',   
+                    onload: function(res){  
+                        var response = res.json();  
+                        var welList = $Element('list3').empty();
+                        var aTemp = response.substring(1,response.length-1).split(','); 
+						for(var li in aTemp){
+							welList.append($("<li>" + aTemp[li].substring(1,aTemp[li].length-1) + "</li>"));  				
+						}
+                    },
+                    callbackid: '12345',   
+                   callbackname: '_callback3'  
+                });  
+                oAjax.request();  
+			}
+
+			function ajaxRequest4() {
+				var oAjax = new $Ajax('data_JSON_for_XHR.txt', {
+					type : 'xhr',
+					method : 'get',
+					jsonp_charset : 'utf-8',
+					onload : function(res) {
+						var response = res.json();
+						 var welList = $Element('list4').empty();  
+						for(var exr in response){
+							welList.append($("<li>" + response[exr] + "</li>"));  				
+
+						}
+
+					},
+					callbackname : '_callback'   
+				});
+				oAjax.request();
+			}
+
+			function ajaxRequest5() {
+				var oAjax = new $Ajax('data_XML_for_XHR.xml', {
+					type : 'xhr',
+					method : 'get',
+					jsonp_charset : 'utf-8',
+					onload : function(res) {
+						var ress = res.xml();
+						var resultTag = ress.getElementsByTagName('data')[0];
+						var resultText = (resultTag.text)? resultTag.text: resultTag.textContent;
+						$Element('list5').html(resultText);
+
+					}
+				});
+				oAjax.request();
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list"></ul>
+		<button onclick="ajaxRequest1(); return false;">
+			txt-xhr
+		</button>
+		<ul id="list2"></ul>
+		<button onclick="ajaxRequest2(); return false;">
+			txt-jsonp
+		</button>
+		<ul id="list3"></ul>
+		<button onclick="ajaxRequest3(); return false;">
+			json-jsonp
+		</button>
+		<ul id="list4"></ul>
+		<button onclick="ajaxRequest4(); return false;">
+			json-xhr
+		</button>
+		<ul id="list5"></ul>
+		<button onclick="ajaxRequest5(); return false;">
+			xml-xhr
+		</button>
+	</body>
+</html>
